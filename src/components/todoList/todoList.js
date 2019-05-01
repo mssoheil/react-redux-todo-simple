@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 
-function todoList() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+import { Wrapper } from "./todoList-styled";
 
-export default todoList
+const TodoList = ({ children }) => {
+	return <Wrapper>{children}</Wrapper>;
+};
+
+export default TodoList;

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+    border: 1px solid ${props => props.borderColor ? props.borderColor : "gray"};
+    border-radius: 5px;
 	width: 80%;
 	height: auto;
 	margin: 0 auto;

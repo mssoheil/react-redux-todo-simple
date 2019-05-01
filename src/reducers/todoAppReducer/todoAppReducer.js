@@ -1,5 +1,5 @@
 const todoAppReducer = (state = {
-    todoList: []
+    todoList: ["initTodo"]
 },
 action) => {
 	switch (action.type) {

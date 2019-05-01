@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
+import { Wrapper } from "./todoButton-styled";
 
-function todoButton() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const TodoButton = props => {
+	const { background, color } = props;
+	return (
+		<Wrapper background={background} color={color}>
+			Add
+		</Wrapper>
+	);
+};
 
-export default todoButton
+export default TodoButton;

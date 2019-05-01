@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
+import { Wrapper } from "./todo-styled";
 
-function todo() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const Todo = ({ children }) => {
+	return <Wrapper>{children}</Wrapper>;
+};
 
-export default todo
+export default Todo;
