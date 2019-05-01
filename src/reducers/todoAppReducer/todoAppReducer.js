@@ -1,7 +1,7 @@
-const todoAppReducer = ((state = {
-	todoList: []
-}),
-action => {
+const todoAppReducer = (state = {
+    todoList: []
+},
+action) => {
 	switch (action.type) {
 		case "ADD_TODO":
 			state = {
@@ -11,6 +11,6 @@ action => {
 			break;
 	}
 	return state;
-});
+};
 
 export default todoAppReducer;
