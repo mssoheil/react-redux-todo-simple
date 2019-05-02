@@ -11,6 +11,8 @@ import customTheme from "./../../config/theme";
 
 import { connect } from "react-redux";
 
+import { addTodo } from "./../../actions/todoActions";
+
 class TodoApp extends Component {
 	constructor(props) {
 		super(props);
@@ -24,15 +26,16 @@ class TodoApp extends Component {
 	changeInputValue(val) {
 		this.setState({ fieldValue: val });
 	}
+
 	render() {
 		const { color } = customTheme,
-			{ todoList } = this.props;
+			{ todoList, addTodo } = this.props;
 		return (
 			<Wrapper borderColor={color.textLight}>
 				<HeaderText color={color.textDark}>Todo list</HeaderText>
 				<TodoList>
 					{todoList.map((item, index) => {
-						return <Todo key={`todo_${index}`}>{item}</Todo>;
+						return <Todo key={`todo_${index}`}>{item}<span>&times;</span></Todo>;
 					})}
 				</TodoList>
 				<TodoInput
@@ -41,9 +44,8 @@ class TodoApp extends Component {
 				/>
 				<br />
 				<TodoButton
-					isClicked={() => {
-						console.log("clicked");
-					}}
+					isClicked={() => { addTodo(this.state.fieldValue);
+					this.setState({fieldValue: ""}) }}
 					background={color.primary}
 					color={color.textLight}
 				>
@@ -61,7 +63,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-	return {};
+	return {
+		addTodo: todo => {
+			dispatch(addTodo(todo));
+		}
+	};
 };
 
 export default connect(

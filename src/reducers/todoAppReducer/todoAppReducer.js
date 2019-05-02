@@ -1,7 +1,9 @@
-const todoAppReducer = (state = {
-    todoList: ["initTodo"]
-},
-action) => {
+const todoAppReducer = (
+	state = {
+		todoList: []
+	},
+	action
+) => {
 	switch (action.type) {
 		case "ADD_TODO":
 			state = {

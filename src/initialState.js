@@ -1,3 +1,3 @@
 export default {
-	todoList: ["initTodo"]
+	todoList: []
 };
