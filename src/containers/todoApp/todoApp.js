@@ -11,7 +11,7 @@ import customTheme from "./../../config/theme";
 
 import { connect } from "react-redux";
 
-import { addTodo } from "./../../actions/todoActions";
+import { addTodo, removeTodo } from "./../../actions/todoActions";
 
 class TodoApp extends Component {
 	constructor(props) {
@@ -29,13 +29,13 @@ class TodoApp extends Component {
 
 	render() {
 		const { color } = customTheme,
-			{ todoList, addTodo } = this.props;
+			{ todoList, addTodo, removeTodo } = this.props;
 		return (
 			<Wrapper borderColor={color.textLight}>
 				<HeaderText color={color.textDark}>Todo list</HeaderText>
 				<TodoList>
 					{todoList.map((item, index) => {
-						return <Todo key={`todo_${index}`}>{item}<span>&times;</span></Todo>;
+						return <Todo key={`todo_${index}`}>{item}<span onClick={() => {removeTodo(index)}} style={{cursor: "pointer"}}>&times;</span></Todo>;
 					})}
 				</TodoList>
 				<TodoInput
@@ -66,6 +66,9 @@ const mapDispatchToProps = dispatch => {
 	return {
 		addTodo: todo => {
 			dispatch(addTodo(todo));
+		},
+		removeTodo: index => {
+			dispatch(removeTodo(index));
 		}
 	};
 };
